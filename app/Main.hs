@@ -5,5 +5,6 @@ import System.Environment
 
 main :: IO ()
 main = do
-    args <- getArgs
-    putStrLn ("Hello, " ++ readTwoArgs args)
+    putStrLn "What is your name?"
+    name <- getLine
+    putStrLn ("Hello, " ++ name)

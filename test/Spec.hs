@@ -12,4 +12,4 @@ spec = do
             readTwoArgs ["hello", "there", "sir"] `shouldBe` "hello there"
     describe "Exercies 2" $
         it "should add the first two numbers" $
-            arithmetic ["1", "2"] `shouldBe` "3"
+            arithmetic ["1", "2", "4"] `shouldBe` "3"
