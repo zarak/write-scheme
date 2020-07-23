@@ -3,9 +3,25 @@
 
 
 -- | Please see the README on GitHub at
---   <a>https://github.com/githubuser/write-scheme#readme</a>
+--   <a>https://github.com/zarak/write-scheme#readme</a>
 @package write-scheme
 @version 0.1.0.0
+
+module Lib
+data LispVal
+Atom :: String -> LispVal
+List :: [LispVal] -> LispVal
+DottedList :: [LispVal] -> LispVal -> LispVal
+Number :: Integer -> LispVal
+String :: String -> LispVal
+Bool :: Bool -> LispVal
+symbol :: Parser Char
+readExpr :: String -> String
+spaces :: Parser ()
+parseString :: Parser LispVal
+parseAtom :: Parser LispVal
+parseNumber :: Parser LispVal
+parseExpr :: Parser LispVal
 
 module Exercises
 
@@ -29,7 +45,24 @@ arithmetic :: [String] -> String
 --   value.
 promptForName :: IO ()
 
-module Lib
-symbol :: Parser Char
-readExpr :: String -> String
-spaces :: Parser ()
+-- | Exercise 4
+--   
+--   Rewrite <tt>parseNumber</tt>, without <tt>liftM</tt>, using 1.
+--   <tt>do-notation</tt> 2. explicit sequencing with the
+--   <tt>&gt;&gt;=</tt> operator
+parseNumber :: Parser LispVal
+
+-- | Exercise 4
+--   
+--   Equivalent version of <a>parseNumber</a> using <tt>&gt;&gt;=</tt>.
+parseNumber' :: Parser LispVal
+
+-- | Exercise 5
+--   
+--   Our strings aren't quite R5RS compliant, because they don't support
+--   escaping of internal quotes within the string. Change
+--   <a>parseString</a> so that <tt>"</tt> gives a literal quote character
+--   instead of terminating the string. You may want to replace <tt>noneOf
+--   """</tt> with a new parser action that accepts <i>either</i> a
+--   non-quote character <i>or</i> a backslash followed by a quote mark.
+parseEsc :: a
