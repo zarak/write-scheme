@@ -30,6 +30,7 @@ promptForName = do
 -- |Exercise 4
 --
 -- Rewrite @parseNumber@, without @liftM@, using
+--
 -- 1. @do-notation@
 -- 2. explicit sequencing with the @>>=@ operator
 parseNumber :: Parser LispVal
