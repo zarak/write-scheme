@@ -6,4 +6,6 @@ import System.Environment
 
 
 main :: IO ()
-main = promptForName
+main = do
+    (expr:_) <- getArgs
+    putStrLn $ readExpr expr

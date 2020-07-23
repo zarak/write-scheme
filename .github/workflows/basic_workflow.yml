@@ -1,0 +1,82 @@
+name: Continuous Integration
+
+# On a typical workflow, changes are made through pull requests against the main branch. 
+# This section makes sure that jobs only executed when either a pull request is opened against
+# `master` or, when a change is pushed to an existing pull request.
+on:
+  # Adding a new source of events when things get pushed to `master`
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        # Here may be defined more targets, like `macOS-latest` or `windows-2016` for compiling and
+        # running tests on different environment. In later steps, we can / should refer to the os as 
+        # `${{ matrix.os }}`.
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    # Some Haskell libraries often requires additional system dependencies (e.g. libgmp-dev, libssl-dev...).
+    # With this action, we can selectively install packages on ubuntu or macOS. 
+    - name: 💽 Install OS Packages
+      uses: mstksg/get-package@v1
+      with:
+        apt-get: libgmp-dev 
+        # brew: ...
+
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v1
+
+    - name: 🧰 Setup Stack
+      uses: mstksg/setup-stack@v1
+
+    # Calculating a cache key as a MD5 hash of the `stack.yaml` 
+    # We use a separate _step_ here with a dedicated `id` so we can refer back to it in other steps.
+    - name: 🔑 Cache Key
+      id: cache_key
+      run: echo ::set-output name=key::$(md5sum stack.yaml | awk '{print $1}')
+
+    # We'll cache the whole `.stack` directory, which contains all the pre-built dependencies, as
+    # well as the right version of GHC corresponding to our snapshot.
+    # Cache are also OS-specific, so we prefix the cache key with the current OS' name.
+    - name: 💾 Cache Dependencies
+      id: cache
+      uses: actions/cache@v1
+      with:
+        path: ~/.stack
+        key: ${{ matrix.os }}-${{ steps.cache_key.outputs.key }}
+
+    # Building only the snapshot is made easy with stack `--only-snapshot` option. Yet, this step is
+    # made optional and only required if we haven't found any cache corresponding to our cache key.
+    - name: 📸 Build Snapshot
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        stack --no-terminal test --bench --only-snapshot
+
+    - name: 🔨 Build & Test
+      run: |
+        # Notice the addition of `--haddock` and `--no-haddock-deps`. 
+        stack --no-terminal test --bench --no-run-benchmarks --haddock --no-haddock-deps
+        # Ideally, we would use `stack path --local-doc-root`, but this is unfortunately broken
+        # since stack-2.1.1 (see also: https://github.com/commercialhaskell/stack/issues/4892)
+        PKG_NAME=$(cat *.cabal | grep "name:" | sed "s/name:\s*\(.*\)/\1/")
+        mkdir -p dist/haddock  && mv $(stack path --local-install-root)/doc/$PKG_NAME-*/* dist/haddock
+    - name: 📘 Publish Documentation
+      # The publication is restricted to one job type only, so that it doesn't get re-published if
+      # we are running this on multiple environments. More importantly, it's only published for
+      # events of type 'push' to prevent external contribution from triggering it!
+      if: matrix.os == 'ubuntu-latest' && github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        # Nothing to configure here, this is already available in the environment
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: dist
+        enable_jekyll: true
