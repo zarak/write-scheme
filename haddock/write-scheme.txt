@@ -47,9 +47,12 @@ promptForName :: IO ()
 
 -- | Exercise 4
 --   
---   Rewrite <tt>parseNumber</tt>, without <tt>liftM</tt>, using 1.
---   <tt>do-notation</tt> 2. explicit sequencing with the
---   <tt>&gt;&gt;=</tt> operator
+--   Rewrite <tt>parseNumber</tt>, without <tt>liftM</tt>, using
+--   
+--   <ol>
+--   <li><pre>do-notation</pre></li>
+--   <li>explicit sequencing with the <tt>&gt;&gt;=</tt> operator</li>
+--   </ol>
 parseNumber :: Parser LispVal
 
 -- | Exercise 4

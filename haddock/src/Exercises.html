@@ -64,12 +64,13 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span id="line-30"></span><span class="hs-comment">-- |Exercise 4</span><span>
 </span><span id="line-31"></span><span class="hs-comment">--</span><span>
 </span><span id="line-32"></span><span class="hs-comment">-- Rewrite @parseNumber@, without @liftM@, using</span><span>
-</span><span id="line-33"></span><span class="hs-comment">-- 1. @do-notation@</span><span>
-</span><span id="line-34"></span><span class="hs-comment">-- 2. explicit sequencing with the @&gt;&gt;=@ operator</span><span>
-</span><span id="line-35"></span><span class="annot"><a href="Exercises.html#parseNumber"><span class="hs-identifier hs-type">parseNumber</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Parser</span></span><span> </span><span class="annot"><a href="Lib.html#LispVal"><span class="hs-identifier hs-type">LispVal</span></a></span><span>
-</span><span id="line-36"></span><span id="parseNumber"><span class="annot"><span class="annottext">parseNumber :: Parser LispVal
+</span><span id="line-33"></span><span class="hs-comment">--</span><span>
+</span><span id="line-34"></span><span class="hs-comment">-- 1. @do-notation@</span><span>
+</span><span id="line-35"></span><span class="hs-comment">-- 2. explicit sequencing with the @&gt;&gt;=@ operator</span><span>
+</span><span id="line-36"></span><span class="annot"><a href="Exercises.html#parseNumber"><span class="hs-identifier hs-type">parseNumber</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Parser</span></span><span> </span><span class="annot"><a href="Lib.html#LispVal"><span class="hs-identifier hs-type">LispVal</span></a></span><span>
+</span><span id="line-37"></span><span id="parseNumber"><span class="annot"><span class="annottext">parseNumber :: Parser LispVal
 </span><a href="Exercises.html#parseNumber"><span class="hs-identifier hs-var hs-var">parseNumber</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">do</span><span>
-</span><span id="line-37"></span><span>    </span><span id="local-6989586621679056126"><span class="annot"><span class="annottext">String
+</span><span id="line-38"></span><span>    </span><span id="local-6989586621679056126"><span class="annot"><span class="annottext">String
 </span><a href="#local-6989586621679056126"><span class="hs-identifier hs-var">d</span></a></span></span><span> </span><span class="hs-glyph">&lt;-</span><span> </span><span class="annot"><span class="annottext">ParsecT String () Identity Char
 -&gt; ParsecT String () Identity String
 forall s (m :: * -&gt; *) t u a.
@@ -78,7 +79,7 @@ ParsecT s u m a -&gt; ParsecT s u m [a]
 </span><span class="hs-identifier hs-var">many1</span></span><span> </span><span class="annot"><span class="annottext">ParsecT String () Identity Char
 forall s (m :: * -&gt; *) u. Stream s m Char =&gt; ParsecT s u m Char
 </span><span class="hs-identifier hs-var">digit</span></span><span>
-</span><span id="line-38"></span><span>    </span><span class="annot"><span class="annottext">LispVal -&gt; Parser LispVal
+</span><span id="line-39"></span><span>    </span><span class="annot"><span class="annottext">LispVal -&gt; Parser LispVal
 forall (m :: * -&gt; *) a. Monad m =&gt; a -&gt; m a
 </span><span class="hs-identifier hs-var">return</span></span><span> </span><span class="annot"><span class="annottext">(LispVal -&gt; Parser LispVal) -&gt; LispVal -&gt; Parser LispVal
 forall a b. (a -&gt; b) -&gt; a -&gt; b
@@ -87,12 +88,12 @@ forall a b. (a -&gt; b) -&gt; a -&gt; b
 forall a. Read a =&gt; String -&gt; a
 </span><span class="hs-identifier hs-var">read</span></span><span> </span><span class="annot"><span class="annottext">String
 </span><a href="#local-6989586621679056126"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Integer</span></span><span class="hs-special">)</span><span>
-</span><span id="line-39"></span><span>
-</span><span id="line-40"></span><span class="hs-comment">-- |Exercise 4</span><span>
-</span><span id="line-41"></span><span class="hs-comment">--</span><span>
-</span><span id="line-42"></span><span class="hs-comment">-- Equivalent version of `parseNumber` using @&gt;&gt;=@.</span><span>
-</span><span id="line-43"></span><span class="annot"><a href="Exercises.html#parseNumber%27"><span class="hs-identifier hs-type">parseNumber'</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Parser</span></span><span> </span><span class="annot"><a href="Lib.html#LispVal"><span class="hs-identifier hs-type">LispVal</span></a></span><span>
-</span><span id="line-44"></span><span id="parseNumber%27"><span class="annot"><span class="annottext">parseNumber' :: Parser LispVal
+</span><span id="line-40"></span><span>
+</span><span id="line-41"></span><span class="hs-comment">-- |Exercise 4</span><span>
+</span><span id="line-42"></span><span class="hs-comment">--</span><span>
+</span><span id="line-43"></span><span class="hs-comment">-- Equivalent version of `parseNumber` using @&gt;&gt;=@.</span><span>
+</span><span id="line-44"></span><span class="annot"><a href="Exercises.html#parseNumber%27"><span class="hs-identifier hs-type">parseNumber'</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Parser</span></span><span> </span><span class="annot"><a href="Lib.html#LispVal"><span class="hs-identifier hs-type">LispVal</span></a></span><span>
+</span><span id="line-45"></span><span id="parseNumber%27"><span class="annot"><span class="annottext">parseNumber' :: Parser LispVal
 </span><a href="Exercises.html#parseNumber%27"><span class="hs-identifier hs-var hs-var">parseNumber'</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">ParsecT String () Identity Char
 -&gt; ParsecT String () Identity String
 forall s (m :: * -&gt; *) t u a.
@@ -114,15 +115,15 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 </span><span class="hs-operator hs-var">.</span></span><span> </span><span class="annot"><span class="annottext">String -&gt; Integer
 forall a. Read a =&gt; String -&gt; a
 </span><span class="hs-identifier hs-var">read</span></span><span>
-</span><span id="line-45"></span><span>
 </span><span id="line-46"></span><span>
-</span><span id="line-47"></span><span class="hs-comment">-- |Exercise 5</span><span>
-</span><span id="line-48"></span><span class="hs-comment">--</span><span>
-</span><span id="line-49"></span><span class="hs-comment">-- Our strings aren't quite R5RS compliant, because they don't support escaping of internal quotes within the string.  </span><span>
-</span><span id="line-50"></span><span class="hs-comment">-- Change 'parseString' so that @\&quot;@ gives a literal quote character instead of terminating the string.  </span><span>
-</span><span id="line-51"></span><span class="hs-comment">-- You may want to replace @noneOf &quot;\&quot;&quot;@ with a new parser action that accepts /either/ a non-quote character /or/ a backslash followed by a quote mark.</span><span>
-</span><span id="line-52"></span><span id="parseEsc"><span class="annot"><span class="annottext">parseEsc :: a
+</span><span id="line-47"></span><span>
+</span><span id="line-48"></span><span class="hs-comment">-- |Exercise 5</span><span>
+</span><span id="line-49"></span><span class="hs-comment">--</span><span>
+</span><span id="line-50"></span><span class="hs-comment">-- Our strings aren't quite R5RS compliant, because they don't support escaping of internal quotes within the string.  </span><span>
+</span><span id="line-51"></span><span class="hs-comment">-- Change 'parseString' so that @\&quot;@ gives a literal quote character instead of terminating the string.  </span><span>
+</span><span id="line-52"></span><span class="hs-comment">-- You may want to replace @noneOf &quot;\&quot;&quot;@ with a new parser action that accepts /either/ a non-quote character /or/ a backslash followed by a quote mark.</span><span>
+</span><span id="line-53"></span><span id="parseEsc"><span class="annot"><span class="annottext">parseEsc :: a
 </span><a href="Exercises.html#parseEsc"><span class="hs-identifier hs-var hs-var">parseEsc</span></a></span></span><span> </span><span class="hs-glyph">=</span><span> </span><span class="annot"><span class="annottext">a
 forall a. HasCallStack =&gt; a
 </span><span class="hs-identifier hs-var">undefined</span></span><span>
-</span><span id="line-53"></span></pre></body></html>
+</span><span id="line-54"></span></pre></body></html>
