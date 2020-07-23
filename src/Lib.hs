@@ -1,11 +1,17 @@
 module Lib where
 
--- |Exercise 1.
+-- |Exercise 1
 -- 
 -- @
 -- Change the program so it reads *two* arguments from the command line, and prints out a message using both of them
 -- @
 readTwoArgs :: [String] -> String
-readTwoArgs [] = "" 
-readTwoArgs [x] = x
-readTwoArgs (x : y : xs) = x ++ " " ++ y
+readTwoArgs = unwords . take 2
+
+-- |Exercise 2
+-- 
+-- @
+-- Change the program so it performs a simple arithmetic operation on the two arguments and prints out the result. 
+-- @
+arithmetic :: [String] -> String
+arithmetic = show . sum . map read . take 2
