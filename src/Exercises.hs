@@ -18,3 +18,13 @@ readTwoArgs = unwords . take 2
 arithmetic :: [String] -> String
 arithmetic = show . sum . map read . take 2
 
+-- |Exercise 3
+-- @
+-- getLine is an IO action that reads a line from the console and returns it as a string. Change the program so it prompts for a name, reads the name, and then prints that instead of the command line value
+-- @
+promptForName :: IO ()
+promptForName = do
+    putStrLn "What is your name?"
+    name <- getLine
+    putStrLn ("Hello, " ++ name)
+
