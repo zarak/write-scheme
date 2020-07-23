@@ -11,22 +11,21 @@ module Exercises
 
 -- | Exercise 1
 --   
---   <pre>
---   Change the program so it reads *two* arguments from the command line, and prints out a message using both of them
---   </pre>
+--   Change the program so it reads *two* arguments from the command line,
+--   and prints out a message using both of them
 readTwoArgs :: [String] -> String
 
 -- | Exercise 2
 --   
---   <pre>
---   Change the program so it performs a simple arithmetic operation on the two arguments and prints out the result. 
---   </pre>
+--   Change the program so it performs a simple arithmetic operation on the
+--   two arguments and prints out the result.
 arithmetic :: [String] -> String
 
--- | Exercise 3 <tt> getLine is an IO action that reads a line from the
---   console and returns it as a string. Change the program so it prompts
---   for a name, reads the name, and then prints that instead of the
---   command line value </tt>
+-- | Exercise 3
+--   
+--   <a>getLine</a> is an IO action that reads a line from the console and
+--   returns it as a string. Change the program so it prompts for a name,
+--   reads the name, and then prints that instead of the command line value
 promptForName :: IO ()
 
 module Lib
