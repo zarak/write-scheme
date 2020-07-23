@@ -1,17 +1,12 @@
 module Lib where
 
--- |Exercise 1
--- 
--- @
--- Change the program so it reads *two* arguments from the command line, and prints out a message using both of them
--- @
-readTwoArgs :: [String] -> String
-readTwoArgs = unwords . take 2
+import Text.ParserCombinators.Parsec hiding (spaces)
 
--- |Exercise 2
--- 
--- @
--- Change the program so it performs a simple arithmetic operation on the two arguments and prints out the result. 
--- @
-arithmetic :: [String] -> String
-arithmetic = show . sum . map read . take 2
+symbol :: Parser Char
+symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
+
+readExpr :: String -> String
+readExpr input = case parse symbol "lisp" input of
+                   Left err -> "No match: " ++ show err
+                   Right val -> "Found value"
+

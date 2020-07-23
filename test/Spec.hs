@@ -1,4 +1,4 @@
-import Lib
+import Exercises
 import Test.Hspec
 import Test.QuickCheck
 
