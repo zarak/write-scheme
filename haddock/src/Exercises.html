@@ -5,7 +5,7 @@
 </span><span id="line-5"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><a href="Lib.html"><span class="hs-identifier">Lib</span></a></span><span>
 </span><span id="line-6"></span><span class="hs-keyword">import</span><span> </span><span class="annot"><span class="hs-identifier">Data.Char</span></span><span>
 </span><span id="line-7"></span><span>
-</span><span id="line-8"></span><span class="hs-comment">-- |Exercise 1</span><span>
+</span><span id="line-8"></span><span class="hs-comment">-- |__Exercise 1__</span><span>
 </span><span id="line-9"></span><span class="hs-comment">-- </span><span>
 </span><span id="line-10"></span><span class="hs-comment">-- Change the program so it reads /two/ arguments from the command line, and prints out a message using both of them.</span><span>
 </span><span id="line-11"></span><span class="annot"><a href="Exercises.html#readTwoArgs"><span class="hs-identifier hs-type">readTwoArgs</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
@@ -18,7 +18,7 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a. Int -&gt; [a] -&gt; [a]
 </span><span class="hs-identifier hs-var">take</span></span><span> </span><span class="annot"><span class="hs-number">2</span></span><span>
 </span><span id="line-13"></span><span>
-</span><span id="line-14"></span><span class="hs-comment">-- |Exercise 2</span><span>
+</span><span id="line-14"></span><span class="hs-comment">-- |__Exercise 2__</span><span>
 </span><span id="line-15"></span><span class="hs-comment">-- </span><span>
 </span><span id="line-16"></span><span class="hs-comment">-- Change the program so it performs a simple arithmetic operation on the two arguments and prints out the result. </span><span>
 </span><span id="line-17"></span><span class="annot"><a href="Exercises.html#arithmetic"><span class="hs-identifier hs-type">arithmetic</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-special">[</span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span class="hs-special">]</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><span class="annot"><span class="hs-identifier hs-type">String</span></span><span>
@@ -43,7 +43,7 @@ forall b c a. (b -&gt; c) -&gt; (a -&gt; b) -&gt; a -&gt; c
 forall a. Int -&gt; [a] -&gt; [a]
 </span><span class="hs-identifier hs-var">take</span></span><span> </span><span class="annot"><span class="hs-number">2</span></span><span>
 </span><span id="line-19"></span><span>
-</span><span id="line-20"></span><span class="hs-comment">-- |Exercise 3</span><span>
+</span><span id="line-20"></span><span class="hs-comment">-- |__Exercise 3__</span><span>
 </span><span id="line-21"></span><span class="hs-comment">--</span><span>
 </span><span id="line-22"></span><span class="hs-comment">-- @getLine@ is an IO action that reads a line from the console and returns it as a string. </span><span>
 </span><span id="line-23"></span><span class="hs-comment">-- Change the program so it prompts for a name, reads the name, and then prints that instead of the command line value.</span><span>
@@ -61,11 +61,11 @@ forall a. [a] -&gt; [a] -&gt; [a]
 </span><span class="hs-operator hs-var">++</span></span><span> </span><span class="annot"><span class="annottext">String
 </span><a href="#local-6989586621679056129"><span class="hs-identifier hs-var">name</span></a></span><span class="hs-special">)</span><span>
 </span><span id="line-29"></span><span>
-</span><span id="line-30"></span><span class="hs-comment">-- |Exercise 4</span><span>
+</span><span id="line-30"></span><span class="hs-comment">-- |__Exercise 4__</span><span>
 </span><span id="line-31"></span><span class="hs-comment">--</span><span>
 </span><span id="line-32"></span><span class="hs-comment">-- Rewrite @parseNumber@, without @liftM@, using</span><span>
 </span><span id="line-33"></span><span class="hs-comment">--</span><span>
-</span><span id="line-34"></span><span class="hs-comment">-- 1. @do-notation@</span><span>
+</span><span id="line-34"></span><span class="hs-comment">-- 1. do-notation</span><span>
 </span><span id="line-35"></span><span class="hs-comment">-- 2. explicit sequencing with the @&gt;&gt;=@ operator</span><span>
 </span><span id="line-36"></span><span class="annot"><a href="Exercises.html#parseNumber"><span class="hs-identifier hs-type">parseNumber</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Parser</span></span><span> </span><span class="annot"><a href="Lib.html#LispVal"><span class="hs-identifier hs-type">LispVal</span></a></span><span>
 </span><span id="line-37"></span><span id="parseNumber"><span class="annot"><span class="annottext">parseNumber :: Parser LispVal
@@ -89,7 +89,7 @@ forall a. Read a =&gt; String -&gt; a
 </span><span class="hs-identifier hs-var">read</span></span><span> </span><span class="annot"><span class="annottext">String
 </span><a href="#local-6989586621679056126"><span class="hs-identifier hs-var">d</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Integer</span></span><span class="hs-special">)</span><span>
 </span><span id="line-40"></span><span>
-</span><span id="line-41"></span><span class="hs-comment">-- |Exercise 4</span><span>
+</span><span id="line-41"></span><span class="hs-comment">-- |__Exercise 4__</span><span>
 </span><span id="line-42"></span><span class="hs-comment">--</span><span>
 </span><span id="line-43"></span><span class="hs-comment">-- Equivalent version of `parseNumber` using @&gt;&gt;=@.</span><span>
 </span><span id="line-44"></span><span class="annot"><a href="Exercises.html#parseNumber%27"><span class="hs-identifier hs-type">parseNumber'</span></a></span><span> </span><span class="hs-glyph">::</span><span> </span><span class="annot"><span class="hs-identifier hs-type">Parser</span></span><span> </span><span class="annot"><a href="Lib.html#LispVal"><span class="hs-identifier hs-type">LispVal</span></a></span><span>
@@ -117,7 +117,7 @@ forall a. Read a =&gt; String -&gt; a
 </span><span class="hs-identifier hs-var">read</span></span><span>
 </span><span id="line-46"></span><span>
 </span><span id="line-47"></span><span>
-</span><span id="line-48"></span><span class="hs-comment">-- |Exercise 5</span><span>
+</span><span id="line-48"></span><span class="hs-comment">-- |__Exercise 5__</span><span>
 </span><span id="line-49"></span><span class="hs-comment">--</span><span>
 </span><span id="line-50"></span><span class="hs-comment">-- Our strings aren't quite R5RS compliant, because they don't support escaping of internal quotes within the string.  </span><span>
 </span><span id="line-51"></span><span class="hs-comment">-- Change 'parseString' so that @\&quot;@ gives a literal quote character instead of terminating the string.  </span><span>

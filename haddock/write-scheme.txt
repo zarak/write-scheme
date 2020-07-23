@@ -25,19 +25,19 @@ parseExpr :: Parser LispVal
 
 module Exercises
 
--- | Exercise 1
+-- | <b>Exercise 1</b>
 --   
 --   Change the program so it reads <i>two</i> arguments from the command
 --   line, and prints out a message using both of them.
 readTwoArgs :: [String] -> String
 
--- | Exercise 2
+-- | <b>Exercise 2</b>
 --   
 --   Change the program so it performs a simple arithmetic operation on the
 --   two arguments and prints out the result.
 arithmetic :: [String] -> String
 
--- | Exercise 3
+-- | <b>Exercise 3</b>
 --   
 --   <tt>getLine</tt> is an IO action that reads a line from the console
 --   and returns it as a string. Change the program so it prompts for a
@@ -45,22 +45,22 @@ arithmetic :: [String] -> String
 --   value.
 promptForName :: IO ()
 
--- | Exercise 4
+-- | <b>Exercise 4</b>
 --   
 --   Rewrite <tt>parseNumber</tt>, without <tt>liftM</tt>, using
 --   
 --   <ol>
---   <li><pre>do-notation</pre></li>
+--   <li>do-notation</li>
 --   <li>explicit sequencing with the <tt>&gt;&gt;=</tt> operator</li>
 --   </ol>
 parseNumber :: Parser LispVal
 
--- | Exercise 4
+-- | <b>Exercise 4</b>
 --   
 --   Equivalent version of <a>parseNumber</a> using <tt>&gt;&gt;=</tt>.
 parseNumber' :: Parser LispVal
 
--- | Exercise 5
+-- | <b>Exercise 5</b>
 --   
 --   Our strings aren't quite R5RS compliant, because they don't support
 --   escaping of internal quotes within the string. Change
