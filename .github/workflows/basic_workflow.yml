@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: build
 
 # On a typical workflow, changes are made through pull requests against the main branch. 
 # This section makes sure that jobs only executed when either a pull request is opened against
